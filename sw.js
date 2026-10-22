@@ -1,5 +1,5 @@
 // 年代相机 EraCam service worker
-const CACHE_VERSION='eracam-v1.19.1-20261023';
+const CACHE_VERSION='eracam-v1.19.2-20261023';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png','./apple-touch-icon.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE_VERSION).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE_VERSION).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
